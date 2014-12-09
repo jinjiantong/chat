@@ -378,8 +378,8 @@ public class MutlChating extends AChating implements OnTouchListener, OnItemClic
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.chating);
-		
+		setContentView(R.layout.multy_chating);
+	    TextView titleView=(TextView)findViewById(R.id.title);
 		//多人聊天室配置
 		jid = getIntent().getStringExtra("jid");
 		muc = new MultiUserChat(Constants.conn, jid);
@@ -388,6 +388,9 @@ public class MutlChating extends AChating implements OnTouchListener, OnItemClic
 		myParticipantStatusListener = new MyParticipantStatusListener();
 		String action = getIntent().getStringExtra("action");
 		System.out.println("房间号：" + jid);
+		String rooName=jid.split("@")[0];
+		titleView.setText(rooName);
+		
 		if ("join".equals(action)) {
 			// 进入房间后的nickname(昵称)
 			
@@ -405,6 +408,7 @@ public class MutlChating extends AChating implements OnTouchListener, OnItemClic
 		} else {
 			// 创建房间并加入
 			createRoom(jid);
+			
 			Log.v(TAG, "create success");
 		}
 		
@@ -414,6 +418,16 @@ public class MutlChating extends AChating implements OnTouchListener, OnItemClic
 		muc.addParticipantStatusListener(myParticipantStatusListener);
 		
 		initUI();
+	}
+	
+	/**
+	 * 跳转到用户列表
+	 * @param view
+	 */
+	 public void getAllmemBer(View view){
+		
+		
+		
 	}
 		/**
 		 * 创建房间
@@ -1351,17 +1365,17 @@ public class MutlChating extends AChating implements OnTouchListener, OnItemClic
 		
 		
 	Handler imgHandle = new Handler() {
-//			@Override
-//			public void handleMessage ( Message  msg) {
-//				switch (msg.what) {
-//				case 1:
-//					setDialogImage();
-//					break;
-//				default:
-//					break;
-//				}
-//				
-//			}
+			@Override
+			public void handleMessage ( android.os.Message  msg) {
+				switch (msg.what) {
+				case 1:
+					setDialogImage();
+					break;
+				default:
+					break;
+				}
+				
+			}
 		};
 	};
 	
