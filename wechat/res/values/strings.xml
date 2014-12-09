@@ -6,7 +6,8 @@
     <string name="main_friend">通讯录</string>
     <string name="main_find_friend">发现</string>
     <string name="main_me">我</string>
-    <string name="main_room">聊天室</string>
+    <string name="main_mutl_room">聊天室</string>
+     <string name="creat_room">创建房间</string>
     
     <!-- 网络和内存卡提示 -->
     <string name="prompt">提示</string>

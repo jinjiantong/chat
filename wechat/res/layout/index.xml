@@ -60,16 +60,16 @@
                 android:textColor="@color/tabbar_text" />
 
             <RadioButton
-                android:id="@+id/radio_button5"
+                android:id="@+id/radio_button4"
                 style="@style/main_tab_bottom"
                 android:layout_marginTop="-2dp"
-                android:background="@drawable/tabbar_button5"
+                android:background="@drawable/tabbar_button4"
                 android:onClick="tabClick"
-                android:text="@string/main_room"
+                android:text="@string/main_mutl_room"
                 android:textColor="@color/tabbar_text" />
 
             <RadioButton
-                android:id="@+id/radio_button4"
+                android:id="@+id/radio_button5"
                 style="@style/main_tab_bottom"
                 android:layout_marginTop="-2dp"
                 android:background="@drawable/tabbar_button4"

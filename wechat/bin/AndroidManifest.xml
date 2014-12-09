@@ -87,6 +87,9 @@
         <activity android:name="ui.Friend" android:screenOrientation="portrait" android:launchMode="singleTask" >           
         </activity>
         
+        <activity android:name="ui.ChatingRoom" android:screenOrientation="portrait" android:launchMode="singleTask" >           
+        </activity>
+        
         <activity android:name="ui.FindFriend" android:screenOrientation="portrait" android:launchMode="singleTask" >           
         </activity>
         
@@ -101,6 +104,11 @@
         
         <activity android:name="ui.Register2" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden|adjustNothing" >           
         </activity>
+         
+        <activity android:name="ui.MutlRoom" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden|adjustNothing" >           
+        </activity>
+        
+        
         
         <!-- ???? -->
 		<service android:name="service.IMChatService"></service>  

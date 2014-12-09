@@ -5,6 +5,8 @@ import bean.UserInfo;
 
 import com.donal.wechat.R;
 
+
+import MutlService.MucService;
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -48,6 +50,10 @@ public class AppActivity extends BaseActivity implements AppActivitySupport{
 		context = this;
 		preferences = getSharedPreferences(CommonValue.LOGIN_SET, 0);
 		notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		
+		//开启被邀请服务
+		Intent service = new Intent(this,MucService.class);
+		startService(service);
 	}
 
 	@Override

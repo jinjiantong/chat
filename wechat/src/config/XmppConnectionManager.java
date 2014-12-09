@@ -27,13 +27,15 @@ import org.jivesoftware.smackx.provider.VCardProvider;
 import org.jivesoftware.smackx.provider.XHTMLExtensionProvider;
 import org.jivesoftware.smackx.search.UserSearch;
 
+import utils.Constants;
+
 /**
  * 
  * XMPP服务器连接工具类.
  * 
  */
 public class XmppConnectionManager {
-	final String XmppHost = "192.168.11.83";
+	final public String XmppHost = "192.168.11.83";
 	final int XmppPort = 5222;
 	public static String BASE_XMPP_SERVER_NAME = "@testchat";
 	
@@ -53,6 +55,13 @@ public class XmppConnectionManager {
 	}
 
 	public XMPPConnection init() {
+		
+		//配置多人聊天用
+		Constants.SERVERDOMAIN=XmppHost;
+		Constants.SERVERNAME=BASE_XMPP_SERVER_NAME;
+		Constants.SERVERNAMEWIOUTCHARIT=BASE_XMPP_SERVER_NAME.substring(1, BASE_XMPP_SERVER_NAME.length()-1);
+		
+		
 		Connection.DEBUG_ENABLED = false;
 		ProviderManager pm = ProviderManager.getInstance();
 		configure(pm);

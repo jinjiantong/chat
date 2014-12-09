@@ -36,6 +36,17 @@
         android:background="#e4e4e4"
         android:layout_alignParentBottom="true"
         />
+
+        <Button
+            android:id="@+id/creatroom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="32dp"
+            android:onClick="createMultRoom"
+            android:text="@string/creat_room" />
+
     </RelativeLayout>
     
     <android.support.v4.widget.SwipeRefreshLayout

@@ -14,16 +14,12 @@ import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.packet.XMPPError;
+import org.jivesoftware.smackx.packet.VCard;
 
 import tools.Logger;
 import ui.adapter.WeChatAdapter;
-import ui.view.SlideDrawerView;
-
-import com.donal.wechat.R;
-
+import utils.Constants;
 import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,6 +34,9 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.donal.wechat.R;
+
 import config.CommonValue;
 import config.MessageManager;
 import config.XmppConnectionManager;
@@ -152,13 +151,15 @@ public class WeChat extends AWechatActivity {
 					String password = appContext.getLoginPassword();
 					String userId = appContext.getLoginUid();
 					XMPPConnection connection = XmppConnectionManager.getInstance()
-							.getConnection();
+							.getConnection(); 
+					
+					
 					connection.connect();
 					connection.login(userId, password, "android"); 
 					connection.sendPacket(new Presence(Presence.Type.available));
 					Logger.i("XMPPClient Logged in as " +connection.getUser());
 					msg.what = 1;
-					
+					setMutlRommSettings(connection);
 				} catch (Exception xee) {
 					if (xee instanceof XMPPException) {
 						XMPPException xe = (XMPPException) xee;
@@ -175,6 +176,36 @@ public class WeChat extends AWechatActivity {
 				handler.sendMessage(msg);
 			}
 		}).start();
+	}
+  
+	/**
+	 * 设置多人聊天用的服务器链接对象 和用户别名
+	 *
+	 * @author jinchunhao
+	 *
+	 */
+	protected void setMutlRommSettings(XMPPConnection connection) {
+		
+		Constants.conn =connection ;
+		//昵称
+		VCard vCard = new VCard();
+		
+		try {
+			vCard.load(Constants.conn);
+			if("".equals(vCard.getNickName()) || null == vCard.getNickName()){
+				
+				vCard.setNickName(appContext.getLoginUid());
+			}
+			Constants.vCard = vCard;
+		
+		} catch (XMPPException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
 	}
 
 	@Override
